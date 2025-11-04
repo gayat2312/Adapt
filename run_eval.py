@@ -31,7 +31,7 @@ def run_eval_interaction(data_filepath, persona_id, env_key, goal, parameters):
     run_task(scene, goal, persona_id, None, data_filepath, parameters, {'initial_scene_key':env_key})
         
 
-def rollout_eval_interactions(run_config, ctx, **args):
+def rollout_eval_interactions(run_config, ctx, parameters, **args):
     processes = []
     for persona_id in run_config["personas"]:
         for eval_idx, goal in enumerate(run_config["goals"]):
@@ -92,4 +92,4 @@ if __name__ == '__main__':
     os.makedirs(args.logs_dir, exist_ok=True)
     parameters.update(args.__dict__)
 
-    rollout_eval_interactions(run_config, ctx, **parameters)
+    rollout_eval_interactions(run_config, ctx, parameters, **parameters)
